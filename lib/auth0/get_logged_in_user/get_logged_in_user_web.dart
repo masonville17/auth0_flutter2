@@ -3,7 +3,7 @@ import 'package:auth0_flutter2/auth0/auth0_flutter_web/auth0_flutter_web.dart'
     as auth0_web;
 
 /// Fetches authenticated user ID on web.
-Future<Map<String, dynamic>?> getLoggedInUserId({
+Future<String?> getLoggedInUserId({
   required String auth0Domain,
   required String auth0ClientId,
   String? redirectUri,
@@ -16,7 +16,8 @@ Future<Map<String, dynamic>?> getLoggedInUserId({
     );
 
     var credentials = await auth0.getUser();
-    return credentials;
+    print(credentials);
+    return credentials?["sub"];
   } catch (e) {
     return null;
   }
